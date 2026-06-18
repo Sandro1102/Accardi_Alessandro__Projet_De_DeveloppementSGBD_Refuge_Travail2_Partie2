@@ -71,5 +71,10 @@ namespace Accardi_Alessandro_Refuge_WPF.VuesModèles
             foreach (Contact c in liste)
                 Contacts.Add(c);
         }
+        public async Task SupprimerContact(CoucheMetier.Contact contact)
+        {
+            await _dao.DeleteAsync(contact);
+            await ChargerContacts();
+        }
     }
 }

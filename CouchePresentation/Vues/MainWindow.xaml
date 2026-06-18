@@ -21,10 +21,14 @@
                           Click="ListerAnimaux_Click" />
             </MenuItem>
             <MenuItem Header="Contact">
-                <MenuItem Header="Ajouter une personne de contact" />
-                <MenuItem Header="Modifier les coordonnées" />
-                <MenuItem Header="Supprimer une personne de contact" />
-                <MenuItem Header="Consulter une personne de contact" />
+                <MenuItem Header="Ajouter une personne de contact"
+                          Click="AjouterContact_Click" />
+                <MenuItem Header="Modifier les coordonnées"
+                          Click="ModifierContact_Click" />
+                <MenuItem Header="Supprimer une personne de contact"
+                          Click="SupprimerContact_Click" />
+                <MenuItem Header="Consulter une personne de contact"
+                          Click="ListerContacts_Click" />
             </MenuItem>
             <MenuItem Header="Famille d'accueil">
                 <MenuItem Header="Ajouter une famille d'accueil" />
@@ -58,21 +62,12 @@
             </ScrollViewer>
 
             <DataGrid Grid.Row="0"
-              Name="dgAnimaux"
-              Margin="5"
-              AutoGenerateColumns="False"
-              IsReadOnly="True"
-              Visibility="Collapsed"
-              MouseDoubleClick="DgAnimaux_DoubleClick">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Identifiant" Binding="{Binding Identifiant}" Width="120" />
-                    <DataGridTextColumn Header="Nom"         Binding="{Binding Nom}"         Width="120" />
-                    <DataGridTextColumn Header="Type"        Binding="{Binding Type}"        Width="80"  />
-                    <DataGridTextColumn Header="Sexe"        Binding="{Binding Sexe}"        Width="60"  />
-                    <DataGridTextColumn Header="Stérilisé"   Binding="{Binding Sterilise}"   Width="80"  />
-                    <DataGridTextColumn Header="Naissance"   Binding="{Binding DateDeNaissance, StringFormat=dd/MM/yyyy}" Width="100" />
-                </DataGrid.Columns>
-            </DataGrid>
+                      Name="dgListe"
+                      Margin="5"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      Visibility="Collapsed"
+                      MouseDoubleClick="DgListe_DoubleClick" />
 
             <Button Grid.Row="1"
             Name="BtnRetour"

@@ -1,0 +1,138 @@
+﻿<Window x:Class="Accardi_Alessandro_Refuge_WPF.Vues.FenetreAjoutContact"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Accardi_Alessandro_Refuge_WPF.Vues"
+        Title="Ajouter un contact" Height="650" Width="600">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Date de naissance (aide à la saisie) -->
+        <TextBlock Text="Date de naissance :"
+                   Grid.Row="0" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <DatePicker Name="DpDateNaissance"
+                    Grid.Row="0" Grid.Column="1" Margin="5"
+                    SelectedDate="{Binding DateDeNaissance}" />
+
+        <!-- Registre national pré-rempli -->
+        <TextBlock Text="Registre national :"
+                   Grid.Row="1" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <StackPanel Grid.Row="1" Grid.Column="1"
+                    Orientation="Horizontal">
+            <TextBlock Text="{Binding DebutRegistreNational}"
+                       VerticalAlignment="Center"
+                       Margin="5,5,0,5"
+                       FontWeight="Bold" />
+            <TextBox Name="TbFinRegistreNational"
+                     Width="80"
+                     Margin="0,5,5,5" />
+        </StackPanel>
+
+        <!-- Nom -->
+        <TextBlock Text="Nom :"
+                   Grid.Row="2" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBox Name="TbNom"
+                 Grid.Row="2" Grid.Column="1" Margin="5" />
+
+        <!-- Prénom -->
+        <TextBlock Text="Prénom :"
+                   Grid.Row="3" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBox Name="TbPrenom"
+                 Grid.Row="3" Grid.Column="1" Margin="5" />
+
+        <!-- Rue -->
+        <TextBlock Text="Rue :"
+                   Grid.Row="4" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBox Name="TbRue"
+                 Grid.Row="4" Grid.Column="1" Margin="5" />
+
+        <!-- Code postal -->
+        <TextBlock Text="Code postal :"
+                   Grid.Row="5" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBox Name="TbCp"
+                 Grid.Row="5" Grid.Column="1" Margin="5" />
+
+        <!-- Localité -->
+        <TextBlock Text="Localité :"
+                   Grid.Row="6" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBox Name="TbLocalite"
+                 Grid.Row="6" Grid.Column="1" Margin="5" />
+
+        <!-- GSM -->
+        <TextBlock Text="GSM :"
+                   Grid.Row="7" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBox Name="TbGsm"
+                 Grid.Row="7" Grid.Column="1" Margin="5" />
+
+        <!-- Téléphone fixe -->
+        <TextBlock Text="Téléphone fixe :"
+                   Grid.Row="8" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBox Name="TbTelephone"
+                 Grid.Row="8" Grid.Column="1" Margin="5" />
+
+        <!-- Email -->
+        <TextBlock Text="Email :"
+                   Grid.Row="9" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBox Name="TbEmail"
+                 Grid.Row="9" Grid.Column="1" Margin="5" />
+
+        <!-- Rôles -->
+        <TextBlock Text="Rôles :"
+                   Grid.Row="10" Grid.Column="0"
+                   VerticalAlignment="Top" Margin="5" />
+        <ItemsControl Grid.Row="10" Grid.Column="1"
+                      ItemsSource="{Binding Roles}"
+                      Margin="5">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                        <CheckBox IsChecked="{Binding Selectionnee}"
+                                  Width="20" />
+                        <TextBlock Text="{Binding Role.Nom}"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Boutons -->
+        <StackPanel Grid.Row="11" Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="5">
+            <Button Content="Enregistrer" Width="90" Margin="5"
+                    Click="BtnEnregistrer_Click" />
+            <Button Content="Annuler" Width="90" Margin="5"
+                    Click="BtnAnnuler_Click" />
+        </StackPanel>
+
+    </Grid>
+</Window>
