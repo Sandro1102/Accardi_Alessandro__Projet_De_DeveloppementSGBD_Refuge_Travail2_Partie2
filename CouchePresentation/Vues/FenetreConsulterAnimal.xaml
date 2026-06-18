@@ -1,0 +1,146 @@
+﻿<Window x:Class="Accardi_Alessandro_Refuge_WPF.Vues.FenetreConsulterAnimal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Accardi_Alessandro_Refuge_WPF.Vues"
+        Title="Consulter un animal" Height="600" Width="600">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Nom -->
+        <TextBlock Text="Nom :"
+                   Grid.Row="0" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBlock Text="{Binding Animal.Nom}"
+                   Grid.Row="0" Grid.Column="1"
+                   VerticalAlignment="Center" Margin="5"
+                   FontWeight="Bold" />
+
+        <!-- Type -->
+        <TextBlock Text="Type :"
+                   Grid.Row="1" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBlock Text="{Binding Animal.Type}"
+                   Grid.Row="1" Grid.Column="1"
+                   VerticalAlignment="Center" Margin="5" />
+
+        <!-- Sexe -->
+        <TextBlock Text="Sexe :"
+                   Grid.Row="2" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBlock Text="{Binding Animal.Sexe}"
+                   Grid.Row="2" Grid.Column="1"
+                   VerticalAlignment="Center" Margin="5" />
+
+        <!-- Stérilisé -->
+        <TextBlock Text="Stérilisé :"
+                   Grid.Row="3" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBlock Text="{Binding Animal.Sterilise}"
+                   Grid.Row="3" Grid.Column="1"
+                   VerticalAlignment="Center" Margin="5" />
+
+        <!-- Date de naissance -->
+        <TextBlock Text="Date de naissance :"
+                   Grid.Row="4" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBlock Text="{Binding Animal.DateDeNaissance, StringFormat=dd/MM/yyyy}"
+                   Grid.Row="4" Grid.Column="1"
+                   VerticalAlignment="Center" Margin="5" />
+
+        <!-- Date de stérilisation -->
+        <TextBlock Text="Date de stérilisation :"
+                   Grid.Row="5" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBlock Text="{Binding Animal.DateDeSterilisation, StringFormat=dd/MM/yyyy}"
+                   Grid.Row="5" Grid.Column="1"
+                   VerticalAlignment="Center" Margin="5" />
+
+        <!-- Date de décès -->
+        <TextBlock Text="Date de décès :"
+                   Grid.Row="6" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBlock Text="{Binding Animal.DateDeDeces, StringFormat=dd/MM/yyyy}"
+                   Grid.Row="6" Grid.Column="1"
+                   VerticalAlignment="Center" Margin="5" />
+
+        <!-- Particularités -->
+        <TextBlock Text="Particularités :"
+                   Grid.Row="7" Grid.Column="0"
+                   VerticalAlignment="Top" Margin="5" />
+        <TextBlock Text="{Binding Animal.Particularite}"
+                   Grid.Row="7" Grid.Column="1"
+                   VerticalAlignment="Top" Margin="5"
+                   TextWrapping="Wrap" />
+
+        <!-- Description -->
+        <TextBlock Text="Description :"
+                   Grid.Row="8" Grid.Column="0"
+                   VerticalAlignment="Top" Margin="5" />
+        <TextBlock Text="{Binding Animal.Description}"
+                   Grid.Row="8" Grid.Column="1"
+                   VerticalAlignment="Top" Margin="5"
+                   TextWrapping="Wrap" />
+
+        <!-- Couleurs -->
+        <TextBlock Text="Couleurs :"
+                   Grid.Row="9" Grid.Column="0"
+                   VerticalAlignment="Top" Margin="5" />
+        <ScrollViewer Grid.Row="9" Grid.Column="1"
+                      MaxHeight="80"
+                      VerticalScrollBarVisibility="Auto"
+                      Margin="5">
+            <ItemsControl ItemsSource="{Binding Couleurs}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Margin="0,2" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- Compatibilités -->
+        <TextBlock Text="Compatibilités :"
+                   Grid.Row="10" Grid.Column="0"
+                   VerticalAlignment="Top" Margin="5" />
+        <ScrollViewer Grid.Row="10" Grid.Column="1"
+                      MaxHeight="80"
+                      VerticalScrollBarVisibility="Auto"
+                      Margin="5">
+            <ItemsControl ItemsSource="{Binding Compatibilites}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Margin="0,2" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- Bouton retour -->
+        <Button Grid.Row="11" Grid.Column="1"
+                Content="Retour"
+                Width="80"
+                Margin="5"
+                HorizontalAlignment="Right"
+                Click="BtnRetour_Click" />
+
+    </Grid>
+</Window>
