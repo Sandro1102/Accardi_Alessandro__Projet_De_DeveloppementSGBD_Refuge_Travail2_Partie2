@@ -1,0 +1,65 @@
+﻿<Window x:Class="Accardi_Alessandro_Refuge_WPF.Vues.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Refuge Animalier" Height="600" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="Animal">
+                <MenuItem Header="Ajouter un animal" />
+                <MenuItem Header="Modifier un animal" />
+                <MenuItem Header="Supprimer un animal" />
+                <MenuItem Header="Consulter un animal" />
+                <MenuItem Header="Lister les animaux du refuge"
+                          Click="ListerAnimaux_Click" />
+            </MenuItem>
+            <MenuItem Header="Contact">
+                <MenuItem Header="Ajouter une personne de contact" />
+                <MenuItem Header="Modifier les coordonnées" />
+                <MenuItem Header="Supprimer une personne de contact" />
+                <MenuItem Header="Consulter une personne de contact" />
+            </MenuItem>
+            <MenuItem Header="Famille d'accueil">
+                <MenuItem Header="Ajouter une famille d'accueil" />
+                <MenuItem Header="Enregistrer le départ d'un animal" />
+                <MenuItem Header="Enregistrer le retour d'un animal" />
+                <MenuItem Header="Lister les familles par animal" />
+                <MenuItem Header="Lister les animaux par famille" />
+            </MenuItem>
+            <MenuItem Header="Adoption">
+                <MenuItem Header="Ajouter une adoption" />
+                <MenuItem Header="Lister les adoptions et statuts" />
+                <MenuItem Header="Modifier le statut d'une adoption" />
+            </MenuItem>
+            <MenuItem Header="Vaccin">
+                <MenuItem Header="Ajouter un vaccin" />
+                <MenuItem Header="Supprimer un vaccin" />
+            </MenuItem>
+        </Menu>
+
+        <!-- Zone boutons : vide pour l'instant -->
+
+        <!-- Zone contenu -->
+        <DataGrid Grid.Row="2"
+                  Name="dgAnimaux"
+                  Margin="5"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Visibility="Collapsed">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Identifiant" Binding="{Binding Identifiant}" Width="120" />
+                <DataGridTextColumn Header="Nom"         Binding="{Binding Nom}"         Width="120" />
+                <DataGridTextColumn Header="Type"        Binding="{Binding Type}"        Width="80"  />
+                <DataGridTextColumn Header="Sexe"        Binding="{Binding Sexe}"        Width="60"  />
+                <DataGridTextColumn Header="Stérilisé"   Binding="{Binding Sterilise}"   Width="80"  />
+                <DataGridTextColumn Header="Naissance"   Binding="{Binding DateDeNaissance, StringFormat=dd/MM/yyyy}" Width="100" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
