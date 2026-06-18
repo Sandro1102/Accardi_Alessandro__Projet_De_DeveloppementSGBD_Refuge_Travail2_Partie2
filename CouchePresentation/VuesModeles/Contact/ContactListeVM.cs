@@ -5,7 +5,7 @@ using Accardi_Alessandro_Refuge_WPF.CoucheMetier;
 
 namespace Accardi_Alessandro_Refuge_WPF.VuesModèles
 {
-    public class AnimalVM : INotifyPropertyChanged
+    public class ContactVM : INotifyPropertyChanged
     {
         // -------------------------------------------------------
         // INotifyPropertyChanged
@@ -23,31 +23,31 @@ namespace Accardi_Alessandro_Refuge_WPF.VuesModèles
         // DAO
         // -------------------------------------------------------
 
-        private AnimalDAO _dao = new AnimalDAO();
+        private ContactDAO _dao = new ContactDAO();
 
         // -------------------------------------------------------
         // Propriétés
         // -------------------------------------------------------
 
-        private ObservableCollection<Animal> _animaux;
-        public ObservableCollection<Animal> Animaux
+        private ObservableCollection<Contact> _contacts;
+        public ObservableCollection<Contact> Contacts
         {
-            get { return this._animaux; }
+            get { return this._contacts; }
             set
             {
-                this._animaux = value;
-                OnPropertyChanged("Animaux");
+                this._contacts = value;
+                OnPropertyChanged("Contacts");
             }
         }
 
-        private Animal _animalSelectionne;
-        public Animal AnimalSelectionne
+        private Contact _contactSelectionne;
+        public Contact ContactSelectionne
         {
-            get { return this._animalSelectionne; }
+            get { return this._contactSelectionne; }
             set
             {
-                this._animalSelectionne = value;
-                OnPropertyChanged("AnimalSelectionne");
+                this._contactSelectionne = value;
+                OnPropertyChanged("ContactSelectionne");
             }
         }
 
@@ -55,44 +55,21 @@ namespace Accardi_Alessandro_Refuge_WPF.VuesModèles
         // Constructeur
         // -------------------------------------------------------
 
-        public AnimalVM()
+        public ContactVM()
         {
-            Animaux = new ObservableCollection<Animal>();
+            Contacts = new ObservableCollection<Contact>();
         }
 
         // -------------------------------------------------------
         // Méthodes
         // -------------------------------------------------------
 
-        public async Task ChargerAnimaux()
+        public async Task ChargerContacts()
         {
-            List<Animal> liste = await _dao.AfficherListeAnimaux();
-            Animaux.Clear();
-            foreach (Animal a in liste)
-                Animaux.Add(a);
-        }
-
-        public async Task AjouterAnimal(Animal animal)
-        {
-            await _dao.InsertAsync(animal);
-            await ChargerAnimaux();
-        }
-
-        public async Task ModifierAnimal(Animal animal)
-        {
-            await _dao.UpdateAsync(animal);
-            await ChargerAnimaux();
-        }
-
-        public async Task SupprimerAnimal(Animal animal)
-        {
-            await _dao.DeleteAsync(animal);
-            await ChargerAnimaux();
-        }
-
-        public async Task<Animal?> ConsulterAnimal(string identifiant)
-        {
-            return await _dao.AfficherUnAsync(identifiant);
+            List<Contact> liste = await _dao.AfficherListeContacts();
+            Contacts.Clear();
+            foreach (Contact c in liste)
+                Contacts.Add(c);
         }
     }
 }
