@@ -17,7 +17,6 @@
                           Click="ModifierAnimal_Click"/>
                 <MenuItem Header="Supprimer un animal" 
                           Click="SupprimerAnimal_Click" />
-                <MenuItem Header="Consulter un animal" />
                 <MenuItem Header="Lister les animaux du refuge"
                           Click="ListerAnimaux_Click" />
             </MenuItem>

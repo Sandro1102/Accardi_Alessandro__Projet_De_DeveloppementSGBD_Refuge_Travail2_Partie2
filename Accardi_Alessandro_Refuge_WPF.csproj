@@ -15,4 +15,7 @@
 			<SubType>Designer</SubType>
 		</ApplicationDefinition>
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="CouchePresentation\Vues\Animaux\" />
+	</ItemGroup>
 </Project>
