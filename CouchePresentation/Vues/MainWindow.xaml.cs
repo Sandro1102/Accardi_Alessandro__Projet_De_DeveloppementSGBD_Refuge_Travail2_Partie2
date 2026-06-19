@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using Accardi_Alessandro_Refuge_WPF.CoucheMetier;
 using Accardi_Alessandro_Refuge_WPF.VuesModèles;
 using Accardi_Alessandro_Refuge_WPF.VuesModèles.Animal;
 using Accardi_Alessandro_Refuge_WPF.VuesModèles.GestionContact;
@@ -145,6 +146,21 @@ namespace Accardi_Alessandro_Refuge_WPF.Vues
             ChargerListeContacts();
         }
 
+        //--------------------------------------------------------
+        // Vaccination
+        //--------------------------------------------------------
+
+        private void AjouterVaccin_Click(object sender, RoutedEventArgs e)
+        {
+            _modeActuel = "ajouter_vaccin";
+            ChargerListeAnimaux();
+        }
+        private void SupprimerVaccin_Click(object sender, RoutedEventArgs e)
+        {
+            _modeActuel = "supprimer_vaccin";
+            ChargerListeAnimaux();
+        }
+
         // -------------------------------------------------------
         // Double-clic sur la liste
         // -------------------------------------------------------
@@ -191,6 +207,25 @@ namespace Accardi_Alessandro_Refuge_WPF.Vues
                     FenetreConsulterAnimal formulaire = new FenetreConsulterAnimal(animal);
                     ZoneContenu.Content = formulaire.Content;
                     ZoneContenu.DataContext = formulaire.DataContext;
+                }
+                else if (_modeActuel == "ajouter_vaccin")
+                {
+                    dgListe.Visibility = Visibility.Collapsed;
+                    BtnRetour.Visibility = Visibility.Collapsed;
+                    FenetreAjoutVaccination formulaire = new FenetreAjoutVaccination(animal);
+                    ZoneContenu.Content = formulaire.Content;
+                    ZoneContenu.DataContext = formulaire.DataContext;
+                    _modeActuel = "consulter";
+                }
+                else if (_modeActuel == "supprimer_vaccin")
+                {
+                    dgListe.Visibility = Visibility.Collapsed;
+                    BtnRetour.Visibility = Visibility.Collapsed;
+
+                    FenetreSupprimerVaccination formulaire = new FenetreSupprimerVaccination(animal);
+                    ZoneContenu.Content = formulaire.Content;
+                    ZoneContenu.DataContext = formulaire.DataContext;
+                    _modeActuel = "consulter";
                 }
             }
             else if (_entiteActuelle == "contact")

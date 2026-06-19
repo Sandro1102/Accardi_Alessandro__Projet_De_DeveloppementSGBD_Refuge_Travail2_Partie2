@@ -43,8 +43,10 @@
                 <MenuItem Header="Modifier le statut d'une adoption" />
             </MenuItem>
             <MenuItem Header="Vaccin">
-                <MenuItem Header="Ajouter un vaccin" />
-                <MenuItem Header="Supprimer un vaccin" />
+                <MenuItem Header="Ajouter un vaccin" 
+                          Click="AjouterVaccin_Click"/>
+                <MenuItem Header="Supprimer un vaccin"
+                          Click="SupprimerVaccin_Click"/>
             </MenuItem>
         </Menu>
 

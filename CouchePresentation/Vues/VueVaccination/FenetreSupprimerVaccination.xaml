@@ -1,0 +1,52 @@
+﻿<Window x:Class="Accardi_Alessandro_Refuge_WPF.Vues.FenetreSupprimerVaccination"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Accardi_Alessandro_Refuge_WPF.Vues"
+        Title="Supprimer des vaccins" Height="500" Width="500">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Animal concerné -->
+        <TextBlock Grid.Row="0"
+                   Text="{Binding Animal.Nom, StringFormat='Vaccins de : {0}'}"
+                   FontWeight="Bold"
+                   FontSize="16"
+                   Margin="5" />
+
+        <!-- Liste des vaccinations -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      Margin="5">
+            <ListBox Name="LbVaccinations"
+                     ItemsSource="{Binding Vaccinations}"
+                     SelectionMode="Multiple">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding VaccinApplique.Nom}" FontWeight="Bold" />
+                            <Run Text=" - " />
+                            <Run Text="{Binding DateVaccination, StringFormat=dd/MM/yyyy}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+
+        <!-- Boutons -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="5">
+            <Button Content="Supprimer" Width="90" Margin="5"
+                    Click="BtnSupprimer_Click" />
+            <Button Content="Annuler" Width="90" Margin="5"
+                    Click="BtnAnnuler_Click" />
+        </StackPanel>
+
+    </Grid>
+</Window>
