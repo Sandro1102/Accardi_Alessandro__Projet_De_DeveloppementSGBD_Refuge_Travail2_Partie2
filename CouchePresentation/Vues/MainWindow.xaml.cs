@@ -147,6 +147,31 @@ namespace Accardi_Alessandro_Refuge_WPF.Vues
         }
 
         //--------------------------------------------------------
+        // Famille Accueil
+        //--------------------------------------------------------
+
+        private void AjouterFamilleAccueil_Click(object sender, RoutedEventArgs e)
+        {
+            _modeActuel = "ajouter_famille_accueil";
+            ChargerListeAnimaux();
+        }
+        private void RetourFamilleAccueil_Click(object sender, RoutedEventArgs e)
+        {
+            _modeActuel = "retour_famille_accueil";
+            ChargerListeAnimaux();
+        }
+        private void ListerFamillesParAnimal_Click(object sender, RoutedEventArgs e)
+        {
+            _modeActuel = "lister_familles_animal";
+            ChargerListeAnimaux();
+        }
+        private void ListerAnimauxParFamille_Click(object sender, RoutedEventArgs e)
+        {
+            _modeActuel = "lister_animaux_famille";
+            ChargerListeContacts();
+        }
+
+        //--------------------------------------------------------
         // Vaccination
         //--------------------------------------------------------
 
@@ -227,6 +252,36 @@ namespace Accardi_Alessandro_Refuge_WPF.Vues
                     ZoneContenu.DataContext = formulaire.DataContext;
                     _modeActuel = "consulter";
                 }
+                else if (_modeActuel == "ajouter_famille_accueil")
+                {
+                    dgListe.Visibility = Visibility.Collapsed;
+                    BtnRetour.Visibility = Visibility.Collapsed;
+
+                    FenetreAjoutFamilleAccueil formulaire = new FenetreAjoutFamilleAccueil(animal);
+                    ZoneContenu.Content = formulaire.Content;
+                    ZoneContenu.DataContext = formulaire.DataContext;
+                    _modeActuel = "consulter";
+                }
+                else if (_modeActuel == "retour_famille_accueil")
+                {
+                    dgListe.Visibility = Visibility.Collapsed;
+                    BtnRetour.Visibility = Visibility.Collapsed;
+
+                    FenetreRetourFamilleAccueil formulaire = new FenetreRetourFamilleAccueil(animal);
+                    ZoneContenu.Content = formulaire.Content;
+                    ZoneContenu.DataContext = formulaire.DataContext;
+                    _modeActuel = "consulter";
+                }
+                else if (_modeActuel == "lister_familles_animal")
+                {
+                    dgListe.Visibility = Visibility.Collapsed;
+                    BtnRetour.Visibility = Visibility.Collapsed;
+
+                    FenetreListerFamillesParAnimal formulaire = new FenetreListerFamillesParAnimal(animal);
+                    ZoneContenu.Content = formulaire.Content;
+                    ZoneContenu.DataContext = formulaire.DataContext;
+                    _modeActuel = "consulter";
+                }
             }
             else if (_entiteActuelle == "contact")
             {
@@ -266,6 +321,16 @@ namespace Accardi_Alessandro_Refuge_WPF.Vues
                     FenetreConsulterContact formulaire = new FenetreConsulterContact(contact);
                     ZoneContenu.Content = formulaire.Content;
                     ZoneContenu.DataContext = formulaire.DataContext;
+                }
+                else if (_modeActuel == "lister_animaux_famille")
+                {
+                    dgListe.Visibility = Visibility.Collapsed;
+                    BtnRetour.Visibility = Visibility.Collapsed;
+
+                    FenetreListerAnimauxParFamille formulaire = new FenetreListerAnimauxParFamille(contact);
+                    ZoneContenu.Content = formulaire.Content;
+                    ZoneContenu.DataContext = formulaire.DataContext;
+                    _modeActuel = "consulter";
                 }
             }
         }

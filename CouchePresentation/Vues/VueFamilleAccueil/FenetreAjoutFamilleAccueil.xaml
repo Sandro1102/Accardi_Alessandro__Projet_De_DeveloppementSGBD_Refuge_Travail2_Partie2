@@ -1,0 +1,63 @@
+﻿<Window x:Class="Accardi_Alessandro_Refuge_WPF.Vues.FenetreAjoutFamilleAccueil"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Accardi_Alessandro_Refuge_WPF.Vues"
+        Title="Ajouter une famille d'accueil" Height="500" Width="600">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Animal concerné -->
+        <TextBlock Grid.Row="0"
+                   Text="{Binding Animal.Nom, StringFormat='Famille d\'accueil pour : {0}'}"
+                   FontWeight="Bold"
+                   FontSize="16"
+                   Margin="5" />
+
+        <!-- Liste des familles d'accueil disponibles -->
+        <DataGrid Grid.Row="1"
+                  Name="DgFamilles"
+                  Margin="5"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  ItemsSource="{Binding FamillesAccueil}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom"     Binding="{Binding Nom}"     Width="120" />
+                <DataGridTextColumn Header="Prénom"  Binding="{Binding Prenom}"  Width="120" />
+                <DataGridTextColumn Header="GSM"     Binding="{Binding Gsm}"     Width="110" />
+                <DataGridTextColumn Header="Email"   Binding="{Binding Email}"   Width="150" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Date de début -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    Margin="5">
+            <TextBlock Text="Date de départ :"
+                       VerticalAlignment="Center"
+                       Width="120" />
+            <DatePicker SelectedDate="{Binding DateDebut}"
+                        DisplayDateStart="{Binding DateDebutMin, Mode=OneWay}"
+                        DisplayDateEnd="{Binding DateDebutMax, Mode=OneWay}"
+                        Width="150" />
+        </StackPanel>
+
+        <!-- Boutons -->
+        <StackPanel Grid.Row="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="5">
+            <Button Content="Enregistrer" Width="90" Margin="5"
+                    Click="BtnEnregistrer_Click" />
+            <Button Content="Annuler" Width="90" Margin="5"
+                    Click="BtnAnnuler_Click" />
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -31,11 +31,14 @@
                           Click="ListerContacts_Click" />
             </MenuItem>
             <MenuItem Header="Famille d'accueil">
-                <MenuItem Header="Ajouter une famille d'accueil" />
-                <MenuItem Header="Enregistrer le départ d'un animal" />
-                <MenuItem Header="Enregistrer le retour d'un animal" />
-                <MenuItem Header="Lister les familles par animal" />
-                <MenuItem Header="Lister les animaux par famille" />
+                <MenuItem Header="Ajouter une famille d'accueil" 
+                          Click="AjouterFamilleAccueil_Click"/>
+                <MenuItem Header="Enregistrer le retour d'un animal"
+                          Click="RetourFamilleAccueil_Click"/>
+                <MenuItem Header="Lister les familles par animal"
+                          Click="ListerFamillesParAnimal_Click"/>
+                <MenuItem Header="Lister les animaux par famille"
+                          Click="ListerAnimauxParFamille_Click"/>
             </MenuItem>
             <MenuItem Header="Adoption">
                 <MenuItem Header="Ajouter une adoption" />
