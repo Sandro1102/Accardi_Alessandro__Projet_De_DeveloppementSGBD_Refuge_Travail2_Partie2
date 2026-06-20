@@ -41,9 +41,10 @@
                           Click="ListerAnimauxParFamille_Click"/>
             </MenuItem>
             <MenuItem Header="Adoption">
-                <MenuItem Header="Ajouter une adoption" />
-                <MenuItem Header="Lister les adoptions et statuts" />
-                <MenuItem Header="Modifier le statut d'une adoption" />
+                <MenuItem Header="Ajouter une adoption"
+                          Click="AjouterAdoption_Click"/>
+                <MenuItem Header="Lister les adoptions et statuts"
+                          Click="ListerAdoptions_Click"/>
             </MenuItem>
             <MenuItem Header="Vaccin">
                 <MenuItem Header="Ajouter un vaccin" 

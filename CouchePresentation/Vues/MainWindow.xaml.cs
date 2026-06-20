@@ -5,6 +5,7 @@ using Accardi_Alessandro_Refuge_WPF.CoucheMetier;
 using Accardi_Alessandro_Refuge_WPF.VuesModèles;
 using Accardi_Alessandro_Refuge_WPF.VuesModèles.Animal;
 using Accardi_Alessandro_Refuge_WPF.VuesModèles.GestionContact;
+using Accardi_Alessandro_Refuge_WPF.VuesModèles.ModeleAdoption;
 
 namespace Accardi_Alessandro_Refuge_WPF.Vues
 {
@@ -12,6 +13,7 @@ namespace Accardi_Alessandro_Refuge_WPF.Vues
     {
         private AnimalVM _vmAnimal = new AnimalVM();
         private ContactVM _vmContact = new ContactVM();
+        private AdoptionListe _vmAdoption = new AdoptionListe();
 
         private string _modeActuel = "consulter";
         private string _entiteActuelle = "animal";
@@ -78,6 +80,15 @@ namespace Accardi_Alessandro_Refuge_WPF.Vues
             dgListe.ItemsSource = _vmContact.Contacts;
             dgListe.Visibility = Visibility.Visible;
             BtnRetour.Visibility = Visibility.Visible;
+        }
+
+        private void ConfigurerColonnesAdoptions()
+        {
+            dgListe.Columns.Clear();
+            dgListe.Columns.Add(new DataGridTextColumn { Header = "Animal", Binding = new Binding("AnimalConcerne.Nom"), Width = 120 });
+            dgListe.Columns.Add(new DataGridTextColumn { Header = "Adoptant", Binding = new Binding("ContactConcerne.Nom"), Width = 120 });
+            dgListe.Columns.Add(new DataGridTextColumn { Header = "Statut", Binding = new Binding("Statut"), Width = 130 });
+            dgListe.Columns.Add(new DataGridTextColumn { Header = "Date demande", Binding = new Binding("Date") { StringFormat = "dd/MM/yyyy" }, Width = 110 });
         }
 
         // -------------------------------------------------------
@@ -169,6 +180,35 @@ namespace Accardi_Alessandro_Refuge_WPF.Vues
         {
             _modeActuel = "lister_animaux_famille";
             ChargerListeContacts();
+        }
+
+        //--------------------------------------------------------
+        // Adoption
+        //--------------------------------------------------------
+
+        private void ListerAdoptions_Click(object sender, RoutedEventArgs e)
+        {
+            _modeActuel = "modifier_adoption";
+            ChargerListeAdoptions();
+        }
+
+        private void AjouterAdoption_Click(object sender, RoutedEventArgs e)
+        {
+            _modeActuel = "ajouter_adoption";
+            ChargerListeAnimaux();
+        }
+
+        private async void ChargerListeAdoptions()
+        {
+            _entiteActuelle = "adoption";
+            ZoneContenu.Content = null;
+            ZoneContenu.DataContext = null;
+
+            ConfigurerColonnesAdoptions();
+            await _vmAdoption.ChargerAdoptions();
+            dgListe.ItemsSource = _vmAdoption.Adoptions;
+            dgListe.Visibility = Visibility.Visible;
+            BtnRetour.Visibility = Visibility.Visible;
         }
 
         //--------------------------------------------------------
@@ -282,6 +322,16 @@ namespace Accardi_Alessandro_Refuge_WPF.Vues
                     ZoneContenu.DataContext = formulaire.DataContext;
                     _modeActuel = "consulter";
                 }
+                else if (_modeActuel == "ajouter_adoption")
+                {
+                    dgListe.Visibility = Visibility.Collapsed;
+                    BtnRetour.Visibility = Visibility.Collapsed;
+
+                    FenetreAjoutAdoption formulaire = new FenetreAjoutAdoption(animal);
+                    ZoneContenu.Content = formulaire.Content;
+                    ZoneContenu.DataContext = formulaire.DataContext;
+                    _modeActuel = "consulter";
+                }
             }
             else if (_entiteActuelle == "contact")
             {
@@ -332,6 +382,17 @@ namespace Accardi_Alessandro_Refuge_WPF.Vues
                     ZoneContenu.DataContext = formulaire.DataContext;
                     _modeActuel = "consulter";
                 }
+            }
+            else if (_entiteActuelle == "adoption")
+            {
+                CoucheMetier.Adoption adoption = (CoucheMetier.Adoption)dgListe.SelectedItem;
+
+                dgListe.Visibility = Visibility.Collapsed;
+                BtnRetour.Visibility = Visibility.Collapsed;
+
+                FenetreModifierAdoption formulaire = new FenetreModifierAdoption(adoption);
+                ZoneContenu.Content = formulaire.Content;
+                ZoneContenu.DataContext = formulaire.DataContext;
             }
         }
 

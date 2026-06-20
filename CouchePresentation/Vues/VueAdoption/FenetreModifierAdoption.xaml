@@ -1,0 +1,66 @@
+﻿<Window x:Class="Accardi_Alessandro_Refuge_WPF.Vues.FenetreModifierAdoption"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Accardi_Alessandro_Refuge_WPF.Vues"
+        Title="Modifier le statut de l'adoption" Height="350" Width="500">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Animal -->
+        <TextBlock Text="Animal :"
+                   Grid.Row="0" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBlock Text="{Binding Adoption.AnimalConcerne.Nom}"
+                   Grid.Row="0" Grid.Column="1"
+                   VerticalAlignment="Center" Margin="5"
+                   FontWeight="Bold" />
+
+        <!-- Adoptant -->
+        <TextBlock Text="Adoptant :"
+                   Grid.Row="1" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBlock Text="{Binding Adoption.ContactConcerne.Nom}"
+                   Grid.Row="1" Grid.Column="1"
+                   VerticalAlignment="Center" Margin="5" />
+
+        <!-- Date de demande -->
+        <TextBlock Text="Date de demande :"
+                   Grid.Row="2" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBlock Text="{Binding Adoption.Date, StringFormat=dd/MM/yyyy}"
+                   Grid.Row="2" Grid.Column="1"
+                   VerticalAlignment="Center" Margin="5" />
+
+        <!-- Statut -->
+        <TextBlock Text="Statut :"
+                   Grid.Row="3" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="5" />
+        <ComboBox  ItemsSource="{Binding Statuts}"
+                   SelectedItem="{Binding Adoption.Statut}"
+                   Grid.Row="3" Grid.Column="1" Margin="5" />
+
+        <!-- Boutons -->
+        <StackPanel Grid.Row="4" Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="5">
+            <Button Content="Enregistrer" Width="90" Margin="5"
+                    Click="BtnEnregistrer_Click" />
+            <Button Content="Annuler" Width="90" Margin="5"
+                    Click="BtnAnnuler_Click" />
+        </StackPanel>
+
+    </Grid>
+</Window>
